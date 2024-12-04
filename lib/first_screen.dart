@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:navigation_codelab/second_screen.dart';
 
 class FirstScreen extends StatelessWidget {
   @override
@@ -10,8 +9,7 @@ class FirstScreen extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () {
             // Navigate to the second screen.
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SecondScreen()));
+            Navigator.pushNamed(context, '/second');
           },
           child: Text('Go to Second Screen'),
         ),
