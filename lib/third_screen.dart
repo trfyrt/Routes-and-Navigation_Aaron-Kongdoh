@@ -12,22 +12,34 @@ class _ThirdScreenState extends State<ThirdScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final String receivedData =
+        ModalRoute.of(context)?.settings.arguments as String? ??
+            'No Data Passed';
+
     return Scaffold(
       appBar: AppBar(
           title: const Text('Third Screen'),
           leading: IconButton(
               onPressed: () {
                 Navigator.pushNamedAndRemoveUntil(
-                    context, '/', (route) => false);
+                    context, '/', (route) => false,
+                    arguments: 'Hello from third screen');
               },
               icon: Icon(Icons.arrow_back))),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
-          },
-          child: const Text('Go Back to First Screen'),
-        ),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(receivedData),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/', (route) => false,
+                      arguments: 'Hello from third screen');
+                },
+                child: const Text('Go Back to First Screen'),
+              ),
+            ]),
       ),
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
@@ -35,7 +47,8 @@ class _ThirdScreenState extends State<ThirdScreen> {
             currentPageIndex = index;
           });
           Navigator.pushNamedAndRemoveUntil(
-              context, routes[index], (route) => false);
+              context, routes[index], (route) => false,
+              arguments: 'Hello from third screen');
         },
         indicatorColor: Colors.blue,
         selectedIndex: currentPageIndex,
