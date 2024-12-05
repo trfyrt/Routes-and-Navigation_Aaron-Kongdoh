@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
         '/second': (context) => SecondScreen(),
         '/third': (context) => ThirdScreen(),
       },
+      initialRoute: '/',
     );
   }
 }
