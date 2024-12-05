@@ -13,7 +13,14 @@ class _ThirdScreenState extends State<ThirdScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Third Screen')),
+      appBar: AppBar(
+          title: const Text('Third Screen'),
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, '/', (route) => false);
+              },
+              icon: Icon(Icons.arrow_back))),
       body: Center(
         child: ElevatedButton(
           onPressed: () {

@@ -13,7 +13,14 @@ class _SecondScreenState extends State<SecondScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Second Screen')),
+      appBar: AppBar(
+          title: const Text('Second Screen'),
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, '/', (route) => false);
+              },
+              icon: Icon(Icons.arrow_back))),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
