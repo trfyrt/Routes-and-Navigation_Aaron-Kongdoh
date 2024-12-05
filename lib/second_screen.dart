@@ -35,16 +35,15 @@ class _SecondScreenState extends State<SecondScreen> {
         selectedIndex: currentPageIndex,
         destinations: const <Widget>[
           NavigationDestination(
-            selectedIcon: Icon(Icons.home),
-            icon: Icon(Icons.home_outlined),
+            icon: Icon(Icons.looks_one),
             label: 'First Page',
           ),
           NavigationDestination(
-            icon: Badge(child: Icon(Icons.notifications_sharp)),
+            icon: Icon(Icons.looks_two),
             label: 'Second Page',
           ),
           NavigationDestination(
-            icon: Badge(child: Icon(Icons.messenger_sharp)),
+            icon: Icon(Icons.looks_3),
             label: 'Third Page',
           ),
         ],
