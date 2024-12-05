@@ -8,7 +8,6 @@ class ThirdScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            // Return to the first screen.
             Navigator.pop(context);
           },
           child: Text('Go Back to First Screen'),
