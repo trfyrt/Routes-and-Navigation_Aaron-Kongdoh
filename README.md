@@ -1,14 +1,30 @@
 # Routes & Navigation Codelabs
 
-Project ini merupakan pengembangan lanjutan dari codelab **navigation_codelab**. Dalam project ini, dipelajari konsep routing dan navigasi, termasuk cara berpindah antar halaman menggunakan tombol pada halaman Flutter maupun bottom navigation bar di bagian bawah halaman.
+Branch project ini merupakan pengembangan lanjutan dari branch [`Lab-Activity-Routing-&-Navigation`](https://github.com/trfyrt/Routes-and-Navigation_Aaron-Kongdoh/tree/Lab-Activity-Routing-%26-Navigation). Pada branch ini ditambahkan beberapa fitur yang merupakan requirement dari tugas Session 5 Assignments - Navigation.
 
-## Advanced Navigation
+## Lab Assignment Requirements
 
 Dalam pengembangan ini, telah ditambahkan:
 
+### Advanced Route Management
+
 - Satu halaman tambahan untuk memperluas fungsionalitas aplikasi.
 - Penamaan routing untuk mempermudah pengelolaan navigasi antar halaman.
-- Bottom navigation bar untuk mempermudah navigasi pengguna.
+- Menggunakan arguments pada untuk meneruskan data antar halaman
+- Menambahkan button "Go Back" yang ditandai dengan gambar arrow_back "←" pada setiap halaman yang mengantar kembali ke `First Screen`
+
+### Complex Navigation Structure
+
+- Mengimplementasikan Navigation Bar dengan opsi navigasi ke halaman `First Screen`, `Second Screen`, dan `Third Screen`.
+
+### Dynamic Routing
+
+- Menambahkan `TextField` pada halaman `First Screen` yang berfungsi untuk menghasilkan halaman baru sesuai dengan jumlah yang diinputkan oleh pengguna.
+
+### Error Handling and User Feedback
+
+- Menambahkan error handling pada `TextField` untuk membatasi jumlah input pengguna hingga maksimal 200.
+- Memberikan feedback berupa `SnackBar` untuk menginformasikan kembali syarat input yang diperbolehkan.
 
 ## Cara Install dan Pakai
 
@@ -46,19 +62,18 @@ Dalam pengembangan ini, telah ditambahkan:
 - **First Screen**: Terdapat Title yang bertuliskan First Screen serta tombol yang berfungsi untuk berpindah ke halaman `Second Screen`
 - **Second Screen**: Terdapat Title yang bertuliskan Second Screen serta tombol yang berfungsi untuk berpindah ke halaman `Third Screen`
 - **Third Screen**: Terdapat Title yang bertuliskan Third Screen serta tombol yang berfungsi untuk berpindah kembali ke halaman `First Screen`
+- **Dynamic Screen**: Terdapat Title yang bertuliskan Dymanic Screen serta list untuk ke halaman yang telah digenerate
+- **Generated Screen**: Terdapat Title yang bertuliskan nomor screen, tulisan unique, tombol ke halaman selanjutnya dan sebelumnya, serta tombol kembali ke `First Screen`
 
 ### Named Routing
 - `/`: Route untuk ke halaman pertama, `First Screen`
 - `/second`: Route untuk ke halaman kedua, `Second Screen`
 - `/third`: Route untuk ke halaman ketiga, `Third Screen`
+- `/dynamic`: Route untuk ke halaman list screen yang tergenerate
 
 ## Tantangan dan Pendekatan
 ### Tantangan
-Dalam lab activity kali ini, saya menghadapi beberapa kendala, salah satunya adalah membuat halaman berpindah sesuai keinginan tanpa menumpuk. Awalnya, saya hanya mengenal mekanisme `push` dan `pop`. Untuk mengatasi hal ini, saya menggunakan metode `pushNamedAndRemoveUntil` dengan argumen `(route) => false`, sehingga halaman tidak menumpuk di stack.
-
-Selain itu, saya juga mengalami kesulitan dalam membuat navigation bar, yang membutuhkan pemahaman lebih mendalam. Untuk mengatasi masalah ini, saya membaca dokumentasi dan mempelajarinya lebih lanjut dengan bertanya kepada ChatGPT. Saya menyimpan nama-nama route yang telah diinisialisasi sebelumnya ke dalam sebuah list bernama `routes`, lalu memanggil route yang diinginkan menggunakan index, seperti pada contoh berikut: `routes[index]`.
+Dalam Lab Assignment kali ini saya sedikit mengalami kendala dalam logika generate screen baru, sehingga membutuhkan waktu yang lebih lama untuk mencari tahu lebih dalam tentang hal tersebut. Mungkin saya mengalami kendala dalam memahami kata "Generate" pada assignment kali ini, sehingga saya berpikir akan kesulitan dalam proses pengerjaannya. Untuk mengatasi hal ini, saya berdiskusi kepada teman saya untuk meluruskan pemahaman saya. Selanjutnya dalam proses pengerjaan saya mengalami kendala dalam mengatur arguments yang diteruskan, sehingga membutuhkan lebih banyak waktu mengatur hal tersebut.
 
 ### Pendekatan
-Dalam mengerjakan lab activity ini, saya menggunakan kode yang telah diberikan di E-learn untuk membuat halaman pertama dan kedua. Setelah itu saya mulai membuat halaman ketiga dengan mengcopy isi kode halaman kedua tetapi mengganti title dan route tombolnya.
-
-Selanjutnya saya mulai mengerjakan advanced routing yang merupakan syarat pengumpulan, yaitu membuat penamaan routing pada halaman `main.dart` dengan mengandalkan dokumentasi dari [Flutter Navigation](https://docs.flutter.dev/ui/navigation). Selanjutnya saya membuat navigation bar yang terdapat pada bawah halaman dengan menggunakan widget `NavigationBar` yang terdapat pada library `material.dart` dengan mengandalkan dokumentasi pada https://api.flutter.dev/flutter/material/NavigationBar-class.html
+Dalam mengerjakan Lab Assigment ini, saya melanjutkan kode dari Lab Activity sebelumnya yang dapat dilihat pada branch [`Lab-Activity-Routing-&-Navigation`](https://github.com/trfyrt/Routes-and-Navigation_Aaron-Kongdoh/tree/Lab-Activity-Routing-%26-Navigation). Selanjutnya saya mulai dengan membuat `TextField` karena semua aksi generate berawal dari kolom teks ini. Dalam pembuatan `TextField` ini saya tidak merasa kesulitan karena sudah mempelajari controller pada Lab Activity sebelumnya yang menggunakan `UserController` dan `PasswordController` untuk login. Selanjutnya saya membuat halaman yang tergenerate dengan nama file `generated_screen.dart`. File ini saya buat dengan mengcopy sebagian besar dari UI `Second Screen`, namun mengganti judul serta isi konten berdasarkan nomor screen. Selanjutnya saya membuat halaman `dynamic` dengan tujuan menampilkan list dari halaman yang telah digenerate. Terakhir saya membuat error handling yang simpel dengan membatasi inputan user, serta memberikan user feedback dengan mengandalkan `SnackBar`.
