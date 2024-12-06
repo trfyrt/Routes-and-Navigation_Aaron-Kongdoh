@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navigation_codelab/dynamic_screen.dart';
 import 'package:navigation_codelab/second_screen.dart';
 import 'package:navigation_codelab/third_screen.dart';
 import 'first_screen.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => FirstScreen(),
         '/second': (context) => SecondScreen(),
         '/third': (context) => ThirdScreen(),
+        '/dynamic': (context) => const DynamicScreen(),
       },
       initialRoute: '/',
     );

@@ -7,6 +7,8 @@ class FirstScreen extends StatefulWidget {
 
 class _FirstScreenState extends State<FirstScreen> {
   int currentPageIndex = 0;
+  final TextEditingController _controller = TextEditingController();
+  int? numberOfScreens;
 
   final List<String> routes = ['/', '/second', '/third'];
 
@@ -21,6 +23,46 @@ class _FirstScreenState extends State<FirstScreen> {
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Text('Dynamic Routing'),
+              const SizedBox(height: 5),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 40),
+                child: TextField(
+                  controller: _controller,
+                  keyboardType: TextInputType.number,
+                  decoration: const InputDecoration(
+                    labelText: 'Enter number of screens (max: 200)',
+                    border: OutlineInputBorder(),
+                  ),
+                  onChanged: (value) {
+                    if (value.isNotEmpty) {
+                      numberOfScreens = int.tryParse(value);
+                    }
+                  },
+                ),
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    if (numberOfScreens != null &&
+                        numberOfScreens! > 0 &&
+                        numberOfScreens! <= 200) {
+                      Navigator.pushNamed(
+                        context,
+                        '/dynamic',
+                        arguments: numberOfScreens,
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            'Please enter a valid number between 1 and 200',
+                          ),
+                        ),
+                      );
+                    }
+                  },
+                  child: const Text('Generate Pages')),
+              const SizedBox(height: 40),
               Text(receivedData),
               ElevatedButton(
                 onPressed: () {
